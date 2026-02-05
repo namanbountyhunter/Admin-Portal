@@ -1,4 +1,5 @@
 {
+  "homepage": "https://namanbountyhunter.github.io/Admin-Portal",
   "name": "project_frontend",
   "version": "0.1.0",
   "private": true,
@@ -16,6 +17,7 @@
     "react": "^19.1.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.2",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -23,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +48,6 @@
     ]
   },
   "devDependencies": {
-    "react-router-dom": "^7.6.2"
+    "gh-pages": "^6.3.0"
   }
 }

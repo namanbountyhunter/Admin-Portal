@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link, Navigate } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Link, Navigate } from "react-router-dom";
 
 import Appone from "./pages/App";
 import Home from "./pages/Home";
@@ -15,7 +15,7 @@ function App() {
     const token = localStorage.getItem("token");
     setIsAuthenticated(!!token);
 
-    fetch("http://127.0.0.1:8000/api/hello/")
+    /*fetch("http://127.0.0.1:8000/api/hello/")
       .then((res) => {
         if (!res.ok) {
           throw new Error("Failed to fetch from Django backend");
@@ -26,7 +26,7 @@ function App() {
       .catch((err) => {
         console.error("Error fetching message:", err);
         setMessage("Failed to load message from backend.");
-      });
+      });*/
   }, []);
 
   return (

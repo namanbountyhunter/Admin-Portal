@@ -119,8 +119,6 @@ def soft_delete_form(request,form_id):
 
 def hello(request):
     return JsonResponse({'message': 'Hello from Django!'})  
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render
 
 def my_paginated_view(request):
     try:
@@ -164,7 +162,7 @@ def login_view(request):
             if user is not None:
                 # Dummy token for demo purposes; replace with JWT or DRF Token later
                 token,created=Token.objects.get_or_create(user=user)
-                return JsonResponse({'token': 'token.key'}, status=200)
+                return JsonResponse({'token': token.key}, status=200)
             else:
                 return JsonResponse({'error': 'Invalid credentials'}, status=401)
         except Exception as e:

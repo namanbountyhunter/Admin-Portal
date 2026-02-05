@@ -56,7 +56,7 @@ MIDDLEWARE = [
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",       # React dev server (HTTP)
-    "https://localhost:",      # Just in case HTTPS is used locally
+    "https://localhost:3000",      # Just in case HTTPS is used locally
     "http://127.0.0.1:3000",
     "https://127.0.0.1:3000",
 ]
