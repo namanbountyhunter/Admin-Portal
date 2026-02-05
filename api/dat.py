@@ -1,6 +1,9 @@
 from pymongo import MongoClient
+import os
 
-client = MongoClient('mongodb://localhost:27017/')
+# Use environment variable for MongoDB connection, fallback to localhost for development
+MONGODB_URI = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/')
+client = MongoClient(MONGODB_URI)
 
 if client:
     print("Database connected")
