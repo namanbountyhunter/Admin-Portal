@@ -1,31 +1,28 @@
 from pymongo import MongoClient
 import os
 
-# Use environment variable for MongoDB connection, fallback to localhost for development
-MONGODB_URI = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/')
+# MongoDB connection
+MONGODB_URI = os.environ.get("MONGODB_URI")
 client = MongoClient(MONGODB_URI)
 
-if client:
-    print("Database connected")
-else:
-    print("Not connected")
+# IMPORTANT: use your own database, NOT "local"
+db = client["adminportal"]
+collection = db["startup_log"]
 
-db = client['local']
-collection = db['startup_log']
+def insert_startup_log(rec: dict):
+    """
+    Insert a record into startup_log collection
+    """
+    return collection.insert_one(rec)
 
-rec = {
-    'title': 'MongoDB and Python',
-    'description': 'MongoDB is a NoSQL database',
-    'tags': ['mongodb', 'database', 'NoSQL'],
-    'viewers': 104
-}
+def get_startup_logs(title: str):
+    """
+    Fetch documents by title
+    """
+    return list(collection.find({"title": title}))
 
-
-result = collection.insert_one(rec)
-print("Inserted document ID:", result.inserted_id)
-
-for doc in collection.find({'title': 'MongoDB and Python'}):
-    print(doc)
-
-count = collection.count_documents({'title': 'MongoDB and Python'})
-print("Number of documents with title 'MongoDB and Python':", count)
+def count_startup_logs(title: str):
+    """
+    Count documents by title
+    """
+    return collection.count_documents({"title": title})
