@@ -27,6 +27,9 @@ def serialize_doc(doc):
 def hello_view(request):
     return JsonResponse({"message": "Hello from Django!"})
 
+def sample_api(request):
+    return JsonResponse({"message": "Hello from API"})
+
 
 @csrf_exempt
 def save_form(request):
